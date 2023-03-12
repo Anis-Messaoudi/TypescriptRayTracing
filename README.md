@@ -1,30 +1,13 @@
 # RaytracingRender
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.5.
+Todo add a decent description 
 
-## Development server
+## How can I try this project
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+1- Clone the repo
+2- run `npm install` in a command prompt in the folder
+3- run `ng serve` in a command prompt. 
 
-## Code scaffolding
+This will host the application on localhost:4200. You can then open that URL in your web browser, and wait for the rendering!
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-=======
-# TypescriptRayTracing
-Past Time project of mine, a pre-render engine that uses raytracing to render 3D shapes with specular surfaces.
+Currently all the rendered examples are hard-coded in, so you'd have to make modifications to the code in order to render different examples. In the future, I will add a neat interface for creating 3D objects.
