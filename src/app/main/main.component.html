@@ -1,0 +1,27 @@
+<p>fps: {{fpsCount}}</p>
+<canvas #canvasElement>
+
+</canvas>
+
+<div style="padding: 0; position: relative; height: 75px; width: 750px;text-align: center; vertical-align: middle; justify-content: center; align-items: center; display: flex;
+">
+    <h2 style="text-align: center; z-index: 10">
+        {{progress.toFixed(2)}}%
+    </h2>
+    <div style="position:absolute; top: 0; left: 0; margin: 0; background: #33ee66; height: 100%; border: #000066 2px solid" [style.width] = "progress + '%'">
+
+    </div>
+</div>
+
+<canvas #framesCanvasElement>
+
+</canvas>
+<br>
+<button (click)="renderPreviousFrame()">{{'<<'}}</button> {{currentFrame}} <button (click)="renderNextFrame()">{{'>>'}}</button>
+
+<ng-container *ngIf="vidUrl != null">
+
+<video [src]="vidUrl" controls="controls" loop="loop" autoplay="autoplay">
+
+</video>
+</ng-container>
