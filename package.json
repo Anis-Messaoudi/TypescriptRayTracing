@@ -21,7 +21,6 @@
     "@types/offscreencanvas": "^2019.7.0",
     "bootstrap": "^5.2.3",
     "gl": "^6.0.2",
-    "gpu.js": "^2.16.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"
