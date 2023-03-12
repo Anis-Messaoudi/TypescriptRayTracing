@@ -10,6 +10,9 @@ import {
 } from "./VectorMath";
 import {Shape} from "./Shape";
 
+/**
+ * Unusued currently, previously used with gpu.js to render spheres
+ */
 export class SphereLogic {
     static getIntersectionPoints = function(rays: number[][][], userPos: number[],
              spherePos: number[], sphereRadius: number) {
@@ -135,14 +138,33 @@ export class SphereLogic {
 
 }
 
+/**
+ * Represents a full sphere.
+ */
 export class Sphere extends Shape{
+    /**
+     * Radius of the sphere.
+     */
     radius: number;
+    /**
+     * Position of the center of the sphere.
+     */
     position: number[];
     colorFunction: (pos: number[])=> (number[]);
     readonly reflectiveness: number;
     transparency: number;
     refractiveIndex: number;
+    /**
+     * Used just in case to JSONify shapes
+     */
     readonly type = 'sphere';
+
+    /**
+     * Constructs a sphere out of required parameters and optional properties
+     * @param radius: The radius of the sphere
+     * @param position: The position of the sphere
+     * @param properties: Extra optional parameters
+     */
     constructor(radius: number, position: number[],
                 properties: {
                     colorFunction?: (pos: number[])=> (number[]),
@@ -272,6 +294,14 @@ export class Sphere extends Shape{
         return t;
     }
 
+    /**
+     * Returns the function that projects an image onto the surface of the sphere. The projection is done throug spherical coordinates,
+     * Where X, Y will be calculated into Phi, Theta and mapped onto the sphere. This shrinks the texture at the poles
+     * @param imgPixels: The pixel values of the image
+     * @param imgWidth: The width of the image
+     * @param imgHeight: the height of the image
+     * @param opts: Extra options.
+     */
     static getProjectedImageColourFunction(imgPixels: number[][][], imgWidth: number, imgHeight: number,
                                            opts: {
                                                 xOffset?:number,

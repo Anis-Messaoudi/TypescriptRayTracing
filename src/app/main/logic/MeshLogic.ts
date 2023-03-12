@@ -1,5 +1,8 @@
 import {VectorCross, VectorNormalize, VectorSub} from "./VectorMath";
 
+/**
+ * Unusued as of now, will be reused in the future to calculate Meshes.
+ */
 export class MeshLogic{
 
     public static getIntersectionPoints = function(rays: number[][][], userPos:number[], triangle: number[][]) {

@@ -1,4 +1,6 @@
-
+/**
+ * Unusued as of currently, was used for gpu.js
+ */
 export class LightLogic{
     static calculateColoursAbsoluteLightFlatSurface = function(normals: number[][][], lightDirection: number[], lightColour:number[], surfaceColour:number[]){
         //@ts-ignore

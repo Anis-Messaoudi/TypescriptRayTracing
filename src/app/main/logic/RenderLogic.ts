@@ -24,6 +24,9 @@ export class RenderLogic{
     init(){
     }
 
+    /**
+     * Initializes the rays emanating from the user's position and directed at all the virual pixels of the "screen"
+     */
     initializeRays(){
         let userPos = [0, 0, -50];
         let screen = {
@@ -69,11 +72,16 @@ export class RenderLogic{
             }
             return result;
         }
-            //this.gpu.createKernel(RayLogic.createRays).setOutput([this.widthResolution, this.heightResolution]);
         this.rays = initializeRayLogic(userPos, screen.position, widthStart, widthStep, heightStart, heightStep, [this.widthResolution, this.heightResolution]) as number[][][];
 
     }
 
+    /**
+     * Calculates the intersection parameter of the calculated rays with the array of shapes
+     * @param rays: the direction of the rendering-rays
+     * @param raySource: Function returning the source of the ray of light: f(i,j) = source of ray i,j
+     * @param rayIntensities: Intensities of the rays, used to disregard rays below a minimum intensity.
+     */
     calculateIntersections(rays: number[][][],
                            // the reason that this is a function and not a matrix, is sometimes the source is one point: screen origin
                            raySource:(x: number, y:number) => number[],
@@ -204,6 +212,12 @@ export class RenderLogic{
 
     }
 
+    /**
+     *
+     * @param rays: the direction of the rendering-rays
+     * @param intersections: Intersection parameters calculated in the previous function, calculateIntersections.
+     * @param raySource: Function returning the source of the ray of light: f(i,j) = source of ray i,j
+     */
     calculateIntersectionPointCoordinates(rays: number[][][],
                                           intersections: number[][],
                                           // the reason that this is a function and not a matrix, is sometimes the source is one point: screen origin
@@ -227,6 +241,11 @@ export class RenderLogic{
         return intersectionPointCoordinates;
     }
 
+    /**
+     * Returns the normals at the intersection points for the intersected shapes
+     * @param intersectionPointCoordinates: the intersection points (3-vectors)
+     * @param shapeIndexes: the indexes of the intersected shapes
+     */
     calculateNormals(intersectionPointCoordinates: number[][][], shapeIndexes: number[][]){
         let normals: number[][][] = [];
 
@@ -252,6 +271,14 @@ export class RenderLogic{
         return normals;
     }
 
+    /**
+     * Returns the rays that reflected off the intersected surfaces.
+     * @param intersectionPointCoordinates: the coordinates of the intersection points (3-vectors)
+     * @param rays: the direction of the rendering-rays
+     * @param shapeIndexes: the indexes of the intersected shapes
+     * @param normals: the surface-normals of the intersections
+     * @param totalRayIntensities: Intensities of the rays
+     */
     calculateReflectedRays(intersectionPointCoordinates: number[][][],
                            rays: number[][][],
                            shapeIndexes: number[][],
@@ -314,6 +341,15 @@ export class RenderLogic{
         }
     }
 
+    /**
+     * Returns the surface colours of the intersections
+     * @param rays: the direciton of the rendering-rays
+     * @param normals: the surface-normals of the intersections
+     * @param shapeIndexes: the indexes of the intersected shapes
+     * @param intersectionPointCoordinates: the coordinates of the intersection points (3-vectors)
+     * @param lightDirectionFunc: function that returns the lighting direction
+     * @param lightColorFunc: function that retusn the lighting colour
+     */
     calculateSurfaceColours(rays: number[][][],
                             normals: number[][][],
                             shapeIndexes: number[][],

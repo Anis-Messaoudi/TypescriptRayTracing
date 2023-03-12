@@ -1,3 +1,6 @@
+/**
+ * Unuused for now, used for the logic of rays for gpu.js
+ */
 export class RayLogic{
     public static createRays = function (userPos: number[], screenPos: number[],
               widthStart: number, widthStep: number, heightStart: number, heightStep: number) {

@@ -19,6 +19,7 @@ import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
 function delay(ms: number) {
     return new Promise( resolve => setTimeout(resolve, ms) );
 }
+
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
@@ -47,6 +48,11 @@ export class MainComponent implements OnInit {
     }
 
 
+    /**
+     * This is the init function.
+     * It has a delay or 'sleep' at the start, in order for the canvas element to render. I should use ngAfterViewInit,
+     * however I had problems with it in the past, so I avoided it and used this weird solution, sorry!
+     */
     public async ngOnInit() {
 
         await delay(100);
